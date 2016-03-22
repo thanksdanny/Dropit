@@ -12,12 +12,23 @@
 @property (weak, nonatomic) IBOutlet UIView *gameView;
 @property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) UIGravityBehavior *gravity;
+@property (nonatomic, strong) UICollisionBehavior *collider;
 
 @end
 
 @implementation ViewController
 
 static const CGSize DROP_SIZE = {40, 40};
+
+- (UICollisionBehavior *)collider {
+    if (!_collider) {
+        _collider = [[UICollisionBehavior alloc] init];
+        _collider.translatesReferenceBoundsIntoBoundary = YES;
+        [self.animator addBehavior:_collider];
+    }
+    return _collider;
+}
+
 - (UIDynamicAnimator *)animator {
     if (!_animator) {
         _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.gameView];
@@ -50,7 +61,8 @@ static const CGSize DROP_SIZE = {40, 40};
     dropView.backgroundColor = [self randomColor];
     [self.gameView addSubview:dropView];
     
-    [self.gravity addItem:dropView]; 
+    [self.gravity addItem:dropView];
+    [self.collider addItem:dropView];
 }
 
 - (UIColor *)randomColor {
