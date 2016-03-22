@@ -58,8 +58,6 @@
 		FDB406261CA139EA0076BEA9 /* DropIt */ = {
 			isa = PBXGroup;
 			children = (
-				FDB4062A1CA139EA0076BEA9 /* AppDelegate.h */,
-				FDB4062B1CA139EA0076BEA9 /* AppDelegate.m */,
 				FDB4062D1CA139EA0076BEA9 /* ViewController.h */,
 				FDB4062E1CA139EA0076BEA9 /* ViewController.m */,
 				FDB406301CA139EA0076BEA9 /* Main.storyboard */,
@@ -74,6 +72,8 @@
 		FDB406271CA139EA0076BEA9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FDB4062A1CA139EA0076BEA9 /* AppDelegate.h */,
+				FDB4062B1CA139EA0076BEA9 /* AppDelegate.m */,
 				FDB406281CA139EA0076BEA9 /* main.m */,
 			);
 			name = "Supporting Files";
