@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIView *gameView;
 @property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) DropitBehavior *dropitBehavior;
+@property (nonatomic, strong) UIAttachmentBehavior *attachment;
+@property (nonatomic, strong) UIView *droppingView;
 
 @end
 
@@ -91,6 +93,25 @@ static const CGSize DROP_SIZE = {40, 40};
     [self drop];
 }
 
+- (IBAction)pan:(UIPanGestureRecognizer *)sender {
+    CGPoint gesturePoint = [sender locationInView:self.gameView];
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        [self attachDroppingViewToPoint:gesturePoint];
+    } else if (sender.state == UIGestureRecognizerStateBegan) {
+        self.attachment.anchorPoint = gesturePoint;
+    } else if (sender.state == UIGestureRecognizerStateEnded) {
+        [self.animator removeBehavior:self.attachment];
+    }
+}
+
+- (void)attachDroppingViewToPoint:(CGPoint)ancharPoint {
+    if (self.droppingView) {
+        self.attachment = [[UIAttachmentBehavior alloc] initWithItem:self.droppingView attachedToAnchor:ancharPoint];
+        self.droppingView = nil;
+        [self.animator addBehavior:self.attachment];
+    }
+}
+
 - (void)drop {
     CGRect frame;
     frame.origin= CGPointZero;
@@ -102,6 +123,8 @@ static const CGSize DROP_SIZE = {40, 40};
     UIView *dropView = [[UIView alloc] initWithFrame:frame];
     dropView.backgroundColor = [self randomColor];
     [self.gameView addSubview:dropView];
+    
+    self.droppingView = dropView;
     
     [self.dropitBehavior addItem:dropView];
 }
