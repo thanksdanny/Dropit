@@ -14,6 +14,7 @@
 		FDB406341CA139EA0076BEA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDB406331CA139EA0076BEA9 /* Assets.xcassets */; };
 		FDB406371CA139EA0076BEA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDB406351CA139EA0076BEA9 /* LaunchScreen.storyboard */; };
 		FDB406401CA1507D0076BEA9 /* DropitBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB4063F1CA1507D0076BEA9 /* DropitBehavior.m */; };
+		FDB406431CA306D70076BEA9 /* BezierPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB406421CA306D70076BEA9 /* BezierPathView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		FDB406381CA139EA0076BEA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDB4063E1CA1507D0076BEA9 /* DropitBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropitBehavior.h; sourceTree = "<group>"; };
 		FDB4063F1CA1507D0076BEA9 /* DropitBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropitBehavior.m; sourceTree = "<group>"; };
+		FDB406411CA306D70076BEA9 /* BezierPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierPathView.h; sourceTree = "<group>"; };
+		FDB406421CA306D70076BEA9 /* BezierPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BezierPathView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,8 @@
 			children = (
 				FDB4062D1CA139EA0076BEA9 /* ViewController.h */,
 				FDB4062E1CA139EA0076BEA9 /* ViewController.m */,
+				FDB406411CA306D70076BEA9 /* BezierPathView.h */,
+				FDB406421CA306D70076BEA9 /* BezierPathView.m */,
 				FDB4063E1CA1507D0076BEA9 /* DropitBehavior.h */,
 				FDB4063F1CA1507D0076BEA9 /* DropitBehavior.m */,
 				FDB406301CA139EA0076BEA9 /* Main.storyboard */,
@@ -156,6 +161,7 @@
 			files = (
 				FDB4062F1CA139EA0076BEA9 /* ViewController.m in Sources */,
 				FDB406401CA1507D0076BEA9 /* DropitBehavior.m in Sources */,
+				FDB406431CA306D70076BEA9 /* BezierPathView.m in Sources */,
 				FDB4062C1CA139EA0076BEA9 /* AppDelegate.m in Sources */,
 				FDB406291CA139EA0076BEA9 /* main.m in Sources */,
 			);
@@ -304,6 +310,7 @@
 				FDB4063D1CA139EA0076BEA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

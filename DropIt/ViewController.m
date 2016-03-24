@@ -8,10 +8,11 @@
 
 #import "ViewController.h"
 #import "DropitBehavior.h"
+#import "BezierPathView.h"
 
 @interface ViewController () <UIDynamicAnimatorDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *gameView;
+@property (weak, nonatomic) IBOutlet BezierPathView *gameView;
 @property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) DropitBehavior *dropitBehavior;
 @property (nonatomic, strong) UIAttachmentBehavior *attachment;
@@ -101,12 +102,21 @@ static const CGSize DROP_SIZE = {40, 40};
         self.attachment.anchorPoint = gesturePoint;
     } else if (sender.state == UIGestureRecognizerStateEnded) {
         [self.animator removeBehavior:self.attachment];
+        self.gameView.path = nil; // 加了这段代码后，才保证连线后线条才会消失
     }
 }
 
 - (void)attachDroppingViewToPoint:(CGPoint)ancharPoint {
     if (self.droppingView) {
         self.attachment = [[UIAttachmentBehavior alloc] initWithItem:self.droppingView attachedToAnchor:ancharPoint];
+        UIView *droppingView = self.droppingView;
+        __weak ViewController *weakSelf = self; // 这里创建一个__weak对象代替self.attachment，就不会出现两个强引用
+        self.attachment.action = ^{
+            UIBezierPath *path = [[UIBezierPath alloc] init];
+            [path moveToPoint:weakSelf.attachment.anchorPoint];  // weakSelf代替self
+            [path addLineToPoint:droppingView.center];
+            weakSelf.gameView.path = path;  // 这里也是，同上
+        };
         self.droppingView = nil;
         [self.animator addBehavior:self.attachment];
     }
